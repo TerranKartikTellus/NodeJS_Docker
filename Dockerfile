@@ -4,8 +4,8 @@ FROM node:alpine
 WORKDIR /usr/app
 
 # DEPENDENCIEW    only if package.json change build new container else use build cache, faster
-RUN npm i                                      
 COPY ./package.json ./
+RUN npm i                                      
 # Copy files to image
 COPY ./ ./
 # RUN NODE APP

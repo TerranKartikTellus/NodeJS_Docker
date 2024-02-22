@@ -1,11 +1,22 @@
-const express = require('express')
+const express = require('express');
 
-const app = express()
+const app = express();
 
-app.get('/',(req,res)=>{
-  res.send('Hi Sir')
-})
+let load = 0; 
 
-app.listen(8081,()=>{
-  console.log('Listening at port: 8081')
-})
+app.get('/', (req, res) => {
+  res.send(`Hi Sir, Load: ${load}`);
+});
+
+app.get('/load', (req, res) => {
+  res.send(`Load: ${load}`);
+});
+
+app.get('/load/:id', (req, res) => {
+  const id = req.params.id;
+  res.send(`Id: ${id}`);
+});
+
+app.listen(8081, () => {
+  console.log('Listening at port: 8081:',load);
+});
